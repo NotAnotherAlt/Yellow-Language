@@ -1,0 +1,22 @@
+define autospace speak (message) base speed [seconds] //yes it can use [text] and (text)
+set [index v] to [1]
+set [word count v] to [1]
+set [current text v] to []
+repeat (length of (message))
+  if <(letter (index) of (message)) = [ ]> then
+    change [word count v] by (1)
+  end
+  change [index v] by (1)
+end
+set [index v] to [1]
+repeat (length of (message))
+  set [current text v] to (join (current text ) (letter (index) of (message)))
+  say (current text )
+  wait (seconds) secs
+  change [index v] by (1)
+end
+wait ((word count) * (0.3)) secs
+say []
+
+when green flag clicked
+autospace speak [hello im TheMaceGoat!] base speed [0.3]
